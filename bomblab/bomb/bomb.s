@@ -363,19 +363,19 @@ Disassembly of section .text:
   400f0e:	74 20                	je     400f30 <phase_2+0x34>
   400f10:	e8 25 05 00 00       	callq  40143a <explode_bomb>
   400f15:	eb 19                	jmp    400f30 <phase_2+0x34>
-  400f17:	8b 43 fc             	mov    -0x4(%rbx),%eax
+  400f17:	8b 43 fc             	mov    -0x4(%rbx),%eax #phase_2+0x1b
   400f1a:	01 c0                	add    %eax,%eax
   400f1c:	39 03                	cmp    %eax,(%rbx)
   400f1e:	74 05                	je     400f25 <phase_2+0x29>
   400f20:	e8 15 05 00 00       	callq  40143a <explode_bomb>
-  400f25:	48 83 c3 04          	add    $0x4,%rbx
+  400f25:	48 83 c3 04          	add    $0x4,%rbx #phase_2+0x29
   400f29:	48 39 eb             	cmp    %rbp,%rbx
   400f2c:	75 e9                	jne    400f17 <phase_2+0x1b>
   400f2e:	eb 0c                	jmp    400f3c <phase_2+0x40>
-  400f30:	48 8d 5c 24 04       	lea    0x4(%rsp),%rbx
+  400f30:	48 8d 5c 24 04       	lea    0x4(%rsp),%rbx #phase_2+0x34
   400f35:	48 8d 6c 24 18       	lea    0x18(%rsp),%rbp
   400f3a:	eb db                	jmp    400f17 <phase_2+0x1b>
-  400f3c:	48 83 c4 28          	add    $0x28,%rsp
+  400f3c:	48 83 c4 28          	add    $0x28,%rsp #phase_2+0x40
   400f40:	5b                   	pop    %rbx
   400f41:	5d                   	pop    %rbp
   400f42:	c3                   	retq   
@@ -390,12 +390,12 @@ Disassembly of section .text:
   400f60:	83 f8 01             	cmp    $0x1,%eax
   400f63:	7f 05                	jg     400f6a <phase_3+0x27>
   400f65:	e8 d0 04 00 00       	callq  40143a <explode_bomb>
-  400f6a:	83 7c 24 08 07       	cmpl   $0x7,0x8(%rsp)
-  400f6f:	77 3c                	ja     400fad <phase_3+0x6a>
+  400f6a:	83 7c 24 08 07       	cmpl   $0x7,0x8(%rsp) #phase_3+0x27
+  400f6f:	77 3c                	ja     400fad <phase_3+0x6a> #无符号大于则跳转
   400f71:	8b 44 24 08          	mov    0x8(%rsp),%eax
   400f75:	ff 24 c5 70 24 40 00 	jmpq   *0x402470(,%rax,8)
   400f7c:	b8 cf 00 00 00       	mov    $0xcf,%eax
-  400f81:	eb 3b                	jmp    400fbe <phase_3+0x7b>
+  400f81:	eb 3b                	jmp    400fbe <pharunse_3+0x7b>
   400f83:	b8 c3 02 00 00       	mov    $0x2c3,%eax
   400f88:	eb 34                	jmp    400fbe <phase_3+0x7b>
   400f8a:	b8 00 01 00 00       	mov    $0x100,%eax
@@ -408,11 +408,11 @@ Disassembly of section .text:
   400fa4:	eb 18                	jmp    400fbe <phase_3+0x7b>
   400fa6:	b8 47 01 00 00       	mov    $0x147,%eax
   400fab:	eb 11                	jmp    400fbe <phase_3+0x7b>
-  400fad:	e8 88 04 00 00       	callq  40143a <explode_bomb>
+  400fad:	e8 88 04 00 00       	callq  40143a <explode_bomb> #phase_3+0x6a
   400fb2:	b8 00 00 00 00       	mov    $0x0,%eax
   400fb7:	eb 05                	jmp    400fbe <phase_3+0x7b>
   400fb9:	b8 37 01 00 00       	mov    $0x137,%eax
-  400fbe:	3b 44 24 0c          	cmp    0xc(%rsp),%eax
+  400fbe:	3b 44 24 0c          	cmp    0xc(%rsp),%eax #phase_3+0x7b
   400fc2:	74 05                	je     400fc9 <phase_3+0x86>
   400fc4:	e8 71 04 00 00       	callq  40143a <explode_bomb>
   400fc9:	48 83 c4 18          	add    $0x18,%rsp
@@ -423,7 +423,7 @@ Disassembly of section .text:
   400fd2:	89 d0                	mov    %edx,%eax
   400fd4:	29 f0                	sub    %esi,%eax
   400fd6:	89 c1                	mov    %eax,%ecx
-  400fd8:	c1 e9 1f             	shr    $0x1f,%ecx
+  400fd8:	c1 e9 1f             	shr    $0x1f,%ecx #正数为全0，负数为全1
   400fdb:	01 c8                	add    %ecx,%eax
   400fdd:	d1 f8                	sar    %eax
   400fdf:	8d 0c 30             	lea    (%rax,%rsi,1),%ecx
@@ -433,7 +433,7 @@ Disassembly of section .text:
   400fe9:	e8 e0 ff ff ff       	callq  400fce <func4>
   400fee:	01 c0                	add    %eax,%eax
   400ff0:	eb 15                	jmp    401007 <func4+0x39>
-  400ff2:	b8 00 00 00 00       	mov    $0x0,%eax
+  400ff2:	b8 00 00 00 00       	mov    $0x0,%eax #func4+0x24
   400ff7:	39 f9                	cmp    %edi,%ecx
   400ff9:	7d 0c                	jge    401007 <func4+0x39>
   400ffb:	8d 71 01             	lea    0x1(%rcx),%esi
@@ -470,16 +470,16 @@ Disassembly of section .text:
   401062:	53                   	push   %rbx
   401063:	48 83 ec 20          	sub    $0x20,%rsp
   401067:	48 89 fb             	mov    %rdi,%rbx
-  40106a:	64 48 8b 04 25 28 00 	mov    %fs:0x28,%rax
+  40106a:	64 48 8b 04 25 28 00 	mov    %fs:0x28,%rax #进入函数时生成的金丝雀值，通过比对可以判断栈是否被破坏
   401071:	00 00 
-  401073:	48 89 44 24 18       	mov    %rax,0x18(%rsp)
-  401078:	31 c0                	xor    %eax,%eax
+  401073:	48 89 44 24 18       	mov    %rax,0x18(%rsp)#将金丝雀放在栈头
+  401078:	31 c0                	xor    %eax,%eax#清空栈
   40107a:	e8 9c 02 00 00       	callq  40131b <string_length>
-  40107f:	83 f8 06             	cmp    $0x6,%eax
+  40107f:	83 f8 06             	cmp    $0x6,%eax#输入字符串长度等于6
   401082:	74 4e                	je     4010d2 <phase_5+0x70>
   401084:	e8 b1 03 00 00       	callq  40143a <explode_bomb>
   401089:	eb 47                	jmp    4010d2 <phase_5+0x70>
-  40108b:	0f b6 0c 03          	movzbl (%rbx,%rax,1),%ecx
+  40108b:	0f b6 0c 03          	movzbl (%rbx,%rax,1),%ecx #phase_5+0x29
   40108f:	88 0c 24             	mov    %cl,(%rsp)
   401092:	48 8b 14 24          	mov    (%rsp),%rdx
   401096:	83 e2 0f             	and    $0xf,%edx
@@ -497,9 +497,9 @@ Disassembly of section .text:
   4010c6:	e8 6f 03 00 00       	callq  40143a <explode_bomb>
   4010cb:	0f 1f 44 00 00       	nopl   0x0(%rax,%rax,1)
   4010d0:	eb 07                	jmp    4010d9 <phase_5+0x77>
-  4010d2:	b8 00 00 00 00       	mov    $0x0,%eax
+  4010d2:	b8 00 00 00 00       	mov    $0x0,%eax #phase_5+0x70
   4010d7:	eb b2                	jmp    40108b <phase_5+0x29>
-  4010d9:	48 8b 44 24 18       	mov    0x18(%rsp),%rax
+  4010d9:	48 8b 44 24 18       	mov    0x18(%rsp),%rax #下面就是金丝雀的验证
   4010de:	64 48 33 04 25 28 00 	xor    %fs:0x28,%rax
   4010e5:	00 00 
   4010e7:	74 05                	je     4010ee <phase_5+0x8c>
@@ -521,9 +521,9 @@ Disassembly of section .text:
   40110b:	49 89 e6             	mov    %rsp,%r14
   40110e:	41 bc 00 00 00 00    	mov    $0x0,%r12d
   401114:	4c 89 ed             	mov    %r13,%rbp
-  401117:	41 8b 45 00          	mov    0x0(%r13),%eax
-  40111b:	83 e8 01             	sub    $0x1,%eax
-  40111e:	83 f8 05             	cmp    $0x5,%eax
+  401117:	41 8b 45 00          	mov    0x0(%r13),%eax #eax=1参数
+  40111b:	83 e8 01             	sub    $0x1,%eax 
+  40111e:	83 f8 05             	cmp    $0x5,%eax 
   401121:	76 05                	jbe    401128 <phase_6+0x34>
   401123:	e8 12 03 00 00       	callq  40143a <explode_bomb>
   401128:	41 83 c4 01          	add    $0x1,%r12d
@@ -547,7 +547,7 @@ Disassembly of section .text:
   401162:	2b 10                	sub    (%rax),%edx
   401164:	89 10                	mov    %edx,(%rax)
   401166:	48 83 c0 04          	add    $0x4,%rax
-  40116a:	48 39 f0             	cmp    %rsi,%rax
+  40116a:	48 39 f0             	cmp    %rsi,%rax1
   40116d:	75 f1                	jne    401160 <phase_6+0x6c>
   40116f:	be 00 00 00 00       	mov    $0x0,%esi
   401174:	eb 21                	jmp    401197 <phase_6+0xa3>
@@ -804,7 +804,7 @@ Disassembly of section .text:
 000000000040145c <read_six_numbers>:
   40145c:	48 83 ec 18          	sub    $0x18,%rsp
   401460:	48 89 f2             	mov    %rsi,%rdx
-  401463:	48 8d 4e 04          	lea    0x4(%rsi),%rcx
+  401463:	48 8d 4e 04          	lea    0x4(%rsi),%rcx #将栈中数据读入，有何意义
   401467:	48 8d 46 14          	lea    0x14(%rsi),%rax
   40146b:	48 89 44 24 08       	mov    %rax,0x8(%rsp)
   401470:	48 8d 46 10          	lea    0x10(%rsi),%rax
@@ -817,7 +817,7 @@ Disassembly of section .text:
   40148f:	83 f8 05             	cmp    $0x5,%eax
   401492:	7f 05                	jg     401499 <read_six_numbers+0x3d>
   401494:	e8 a1 ff ff ff       	callq  40143a <explode_bomb>
-  401499:	48 83 c4 18          	add    $0x18,%rsp
+  401499:	48 83 c4 18          	add    $0x18,%rsp #read_six_numbers+0x3d
   40149d:	c3                   	retq   
 
 000000000040149e <read_line>:

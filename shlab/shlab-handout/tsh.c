@@ -391,7 +391,7 @@ void sigchld_handler(int sig)
     	    struct job_t* job = getjobpid(jobs, pid);
             sigprocmask(SIG_BLOCK, &mask_all, &prev);
             printf("Job [%d] (%d) terminated by signal %d\n", job->jid, job->pid, WTERMSIG(status));
-            deletejob(jobs, pid);
+            //deletejob(jobs, pid);
             sigprocmask(SIG_SETMASK, &prev, NULL);
     	}
     	else  // 停止 只修改状态就行
